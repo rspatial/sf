@@ -341,6 +341,10 @@ CPL_xy2sfc <- function(cc, dim, to_points, which, cc_has_NAs) {
     .Call(`_sf_CPL_xy2sfc`, cc, dim, to_points, which, cc_has_NAs)
 }
 
+.sfwktbuffer <- function(wkt, d) {
+    .Call(`_sf_wktbuffer`, wkt, d)
+}
+
 sfc_is_null <- function(sfc) {
     .Call(`_sf_sfc_is_null`, sfc)
 }

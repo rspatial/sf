@@ -1162,6 +1162,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// wktbuffer
+std::vector<std::string> wktbuffer(std::vector<std::string> wkt, double d);
+RcppExport SEXP _sf_wktbuffer(SEXP wktSEXP, SEXP dSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type wkt(wktSEXP);
+    Rcpp::traits::input_parameter< double >::type d(dSEXP);
+    rcpp_result_gen = Rcpp::wrap(wktbuffer(wkt, d));
+    return rcpp_result_gen;
+END_RCPP
+}
 // sfc_is_null
 LogicalVector sfc_is_null(List sfc);
 RcppExport SEXP _sf_sfc_is_null(SEXP sfcSEXP) {
@@ -1352,7 +1364,7 @@ RcppExport SEXP _sf_CPL_read_wkb(SEXP wkb_listSEXP, SEXP EWKBSEXP, SEXP spatiali
     if (rcpp_isError_gen) {
         SEXP rcpp_msgSEXP_gen = Rf_asChar(rcpp_result_gen);
         UNPROTECT(1);
-        Rf_error("%s", CHAR(rcpp_msgSEXP_gen));
+        Rf_error(CHAR(rcpp_msgSEXP_gen));
     }
     UNPROTECT(1);
     return rcpp_result_gen;
@@ -1387,7 +1399,7 @@ RcppExport SEXP _sf_CPL_write_wkb(SEXP sfcSEXP, SEXP EWKBSEXP) {
     if (rcpp_isError_gen) {
         SEXP rcpp_msgSEXP_gen = Rf_asChar(rcpp_result_gen);
         UNPROTECT(1);
-        Rf_error("%s", CHAR(rcpp_msgSEXP_gen));
+        Rf_error(CHAR(rcpp_msgSEXP_gen));
     }
     UNPROTECT(1);
     return rcpp_result_gen;
@@ -1521,6 +1533,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_sf_CPL_proj_direct", (DL_FUNC) &_sf_CPL_proj_direct, 5},
     {"_sf_CPL_proj_info", (DL_FUNC) &_sf_CPL_proj_info, 1},
     {"_sf_CPL_xy2sfc", (DL_FUNC) &_sf_CPL_xy2sfc, 5},
+    {"_sf_wktbuffer", (DL_FUNC) &_sf_wktbuffer, 2},
     {"_sf_sfc_is_null", (DL_FUNC) &_sf_sfc_is_null, 1},
     {"_sf_sfc_unique_sfg_dims_and_types", (DL_FUNC) &_sf_sfc_unique_sfg_dims_and_types, 1},
     {"_sf_sfc_is_empty", (DL_FUNC) &_sf_sfc_is_empty, 1},
